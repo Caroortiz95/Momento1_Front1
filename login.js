@@ -1,12 +1,14 @@
+import { validacionNombre, validacionContrasena } from "./functions.js";
+
 const usuarioGuardado = "Scath";
 const contrasenaGuardada = "Pepadeaguacate";
 let cantidadIntentoss = 3;
 
 do{
     let usuarioIngresado = prompt(`Por favor ingrese su usuario: `)
-    if (usuarioIngresado === usuarioGuardado) {
+    if (validacionNombre(usuarioGuardado, usuarioIngresado) === true) {
         let contrasenaIngresada = prompt(`Por favor ingrese su contraseña: `)
-        if (contrasenaIngresada === contrasenaGuardada) {
+        if (validacionContrasena(contrasenaGuardada, contrasenaIngresada) === true) {
             break;
         }else{
             cantidadIntentoss--;
@@ -22,6 +24,7 @@ do{
         else{
             console.log(`El usuario ha sido bloqueado por agotar la cantidad de intentos`);
         }
+        
     }
 }while(cantidadIntentoss > 0);
 
